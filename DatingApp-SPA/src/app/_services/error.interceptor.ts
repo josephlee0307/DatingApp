@@ -12,12 +12,14 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
         catchError(error => {
             if (error.status === 401) {
+                console.log('inter>>' + error.statusText);
                 return throwError(error.statusText);
             }
 
             if (error instanceof HttpErrorResponse) {
                 const applicationError = error.headers.get('Application-Error');
                 if (applicationError) {
+                    console.log('inter>>' + applicationError);
                     return throwError(applicationError);
                 }
 
@@ -28,6 +30,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                         if (serverError.errors[key]) {
                             modelStateError += serverError.errors[key] + '\n';
                         }
+                        console.log('inter>>' + serverError + '==' + modelStateError);
                     }
                 }
                 return throwError(modelStateError || serverError || 'Server Error');
