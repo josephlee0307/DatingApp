@@ -23,6 +23,7 @@ export class MemberDetailComponent implements OnInit {
 
   ngOnInit() {
     // this.loadUser();
+
     this.route.data.subscribe(data => {
       this.user = data.user;
     });
