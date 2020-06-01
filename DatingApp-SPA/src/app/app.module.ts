@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 // import { NgxGalleryModule } from 'ngx-gallery';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
+import { TimeagoModule, TimeagoPipe } from 'ngx-timeago';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,7 +42,7 @@ export function getToken() {
       ListsComponent,
       MessagesComponent,
       MemberDetailComponent,
-      MemberEditComponent
+      MemberEditComponent,
    ],
    imports: [
       BrowserModule,
@@ -62,6 +63,7 @@ export function getToken() {
       }),
       TabsModule.forRoot(),
       NgxGalleryModule,
+      TimeagoModule.forRoot()
    ],
    providers: [
       ErrorInterceporProvider,
